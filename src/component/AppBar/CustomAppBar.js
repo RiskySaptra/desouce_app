@@ -15,7 +15,7 @@ const CustomAppBar = (props) => {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
+      <AppBar position="fixed" className={classes.appBar} elevation={1}>
         <Toolbar>
           <IconButton
             color="inherit"

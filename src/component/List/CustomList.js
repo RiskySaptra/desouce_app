@@ -7,14 +7,13 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Collapse from "@material-ui/core/Collapse";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import SendIcon from "@material-ui/icons/Send";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
-import StarBorder from "@material-ui/icons/StarBorder";
 import useStyles from "./style";
+import Typography from "@material-ui/core/Typography";
 
-const CustomList = () => {
+const CustomList = (props) => {
+  const { fields } = props;
   const history = useHistory();
   const classes = useStyles();
   const [action, setAction] = React.useState({
@@ -22,37 +21,6 @@ const CustomList = () => {
     childIndex: null,
     open: false,
   });
-
-  const fields = [
-    {
-      icon: <SendIcon />,
-      title: "Dashboard",
-      path: "/home",
-    },
-    {
-      icon: <SendIcon />,
-      title: "Sales Order",
-      path: "/home/salesorder",
-    },
-    {
-      icon: <SendIcon />,
-      title: "Purchase Order",
-      path: "/home/purchaseorder",
-    },
-    {
-      icon: <InboxIcon />,
-      title: "Warehouse",
-      children: [
-        { icon: <SendIcon />, title: "child Sales Order" },
-        { icon: <SendIcon />, title: "child Sales Order" },
-      ],
-    },
-    {
-      icon: <InboxIcon />,
-      title: "Warehouse 2",
-      children: [{ icon: <SendIcon />, title: "child Sales Order" }],
-    },
-  ];
 
   const handleClick = (props) => {
     setAction({ ...action, index: props.index });
@@ -64,7 +32,9 @@ const CustomList = () => {
         childIndex: null,
       });
     }
-    history.push(props.field.path);
+    if (!props.field.children) {
+      history.push(props.field.path);
+    }
   };
 
   const handleClickChild = (props) => {
@@ -74,7 +44,6 @@ const CustomList = () => {
   return (
     <List
       component="nav"
-      aria-labelledby="nested-list-subheader"
       className={classes.root}
     >
       {fields.map((field, index) => {
