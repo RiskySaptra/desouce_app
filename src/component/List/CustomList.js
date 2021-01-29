@@ -1,5 +1,5 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React, {useEffect} from "react";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 
 // import ListSubheader from "@material-ui/core/ListSubheader";
 import List from "@material-ui/core/List";
@@ -10,7 +10,6 @@ import Collapse from "@material-ui/core/Collapse";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import useStyles from "./style";
-import Typography from "@material-ui/core/Typography";
 
 const CustomList = (props) => {
   const { fields } = props;
@@ -21,6 +20,15 @@ const CustomList = (props) => {
     childIndex: null,
     open: false,
   });
+
+  const position = history.location.pathname
+  console.log(position);
+
+  
+  // useEffect(() => {
+  //   const found = field.find(element => element > 10);
+  //   console.log(history.location.pathname);
+  // },[]);
 
   const handleClick = (props) => {
     setAction({ ...action, index: props.index });
@@ -49,6 +57,7 @@ const CustomList = (props) => {
       {fields.map((field, index) => {
         return (
           <>
+          
             <ListItem
               button
               selected={index === action.index}

@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = () => {
   const history = useHistory();
-  const gotoHome = () => history.push("/home");
+  // const gotoHome = () => history.push("/home");
 
   const classes = useStyles();
   return (
@@ -109,7 +109,7 @@ const Login = () => {
                     <Button
                       variant="contained"
                       color="secondary"
-                      onClick={gotoHome}
+                      onClick={history.push("/home")}
                     >
                       Login
                     </Button>

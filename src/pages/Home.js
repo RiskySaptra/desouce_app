@@ -7,8 +7,6 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import HomeIcon from "@material-ui/icons/Home";
 import DescriptionIcon from "@material-ui/icons/Description";
 
-// import StarBorder from "@material-ui/icons/StarBorder";
-// import InboxIcon from "@material-ui/icons/MoveToInbox";
 import SendIcon from "@material-ui/icons/Send";
 
 const fields = [
@@ -30,11 +28,11 @@ const fields = [
       { icon: <SendIcon />, title: "Warehouse 2" },
     ],
   },
-  // {
-  //   icon: <InboxIcon />,
-  //   title: "Warehouse 2",
-  //   children: [{ icon: <SendIcon />, title: "child Sales Order" }],
-  // },
+  {
+    icon: <HomeIcon />,
+    title: "Warehouse 2",
+    children: [{ icon: <SendIcon />, title: "child Sales Order" }],
+  },
 ];
 
 const Home = () => {
@@ -52,7 +50,7 @@ const Home = () => {
             mobileOpen={mobileOpen}
             handleDrawerToggle={handleDrawerToggle}
           >
-            <CustomList fields={fields} />
+            <CustomList fields={fields} logo={'test'}  />
           </CustomDrawer>
         }
       >
